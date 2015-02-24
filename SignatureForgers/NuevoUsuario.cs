@@ -18,93 +18,197 @@ namespace SignatureForgers
        public string lastNameFromUserForm = "apellidoprueba";
        public string dniFromUserForm = "dniprueba";
        public string ageFromUserForm = "edadprueba";
-       public string emailFromUserForm = "";
-       public string phoneNumberFromUserForm = "";
+       public string emailFromUserForm = "email@prueba.es";
+       public string phoneNumberFromUserForm = "666111666";
+       public string lateralityFromUserForm = "lateralidad prueba";
+       public int userID = 0;
+
+        //DUDA ¿Por qué sólo me dejaba llamarla abajo si era static??
+       public static string directoryDependingOnUserType = @"D:\Laura\Uni\Curso 2014-2015\Trabajo Fin de Grado\Código\Pruebas";
+              
                 
-        public NuevoUsuario()
+        public NuevoUsuario(string userType)
         {
+            if (userType == "Falsificador")
+            {
+                directoryDependingOnUserType = @"D:\Laura\Uni\Curso 2014-2015\Trabajo Fin de Grado\Código\Pruebas\Falsificadores";
+            }
+            else
+            {
+                directoryDependingOnUserType = @"D:\Laura\Uni\Curso 2014-2015\Trabajo Fin de Grado\Código\Pruebas\Genuinos";
+            }
+
             InitializeComponent();
             
         }
 
         private void buttonAccept_Click(object sender, EventArgs e)
         {
+            bool oneOrMoreErrorInForm;
+            string errorLog = "";
+
             nameFromUserForm = textBoxName.Text;
             lastNameFromUserForm = textBoxSurname.Text;
             dniFromUserForm = textBoxDNI.Text;
             ageFromUserForm = textBoxAge.Text;
             emailFromUserForm = textBoxEmail.Text;
             phoneNumberFromUserForm = textBoxPhoneNumber.Text;
-            //TO DO falta el radio button de la lateralidad
+            
+            /*
+             * lateralidad desde los radioButtons del formulario 
+             */
+            if (radioButtonZurdo.Checked == true)
+            {
+                lateralityFromUserForm = radioButtonZurdo.Text;
+            }
+            else if (radioButtonDiestro.Checked == true)
+            {
+                lateralityFromUserForm = radioButtonDiestro.Text;
+            }
+            else
+            {
+                errorLog = errorLog + "No ha seleccionado su lateralidad. \n\n";
+                oneOrMoreErrorInForm = true;
+            }
+
+                                    
+            userID = getUserID();
+
+            Usuario newUser = new Usuario(nameFromUserForm, lastNameFromUserForm, dniFromUserForm, ageFromUserForm, phoneNumberFromUserForm, emailFromUserForm, lateralityFromUserForm, userID);
+
 
             //TO DO metodo que haga todas las comprobaciones juntas
 
-            //Eliminamos los espacios
-            dniFromUserForm = Regex.Replace(dniFromUserForm, @"\s", "");
-            ageFromUserForm = Regex.Replace(ageFromUserForm, @"\s", "");
-            emailFromUserForm = Regex.Replace(emailFromUserForm, @"\s", "");
-            phoneNumberFromUserForm = Regex.Replace(phoneNumberFromUserForm, @"\s", "");
+            /*
+             * Eliminamos los espacios
+             */
+            newUser.userDNI = Regex.Replace(newUser.userDNI, @"\s", "");
+            newUser.userAge = Regex.Replace(newUser.userAge, @"\s", "");
+            newUser.userEmail = Regex.Replace(newUser.userEmail, @"\s", "");
+            newUser.userPhone = Regex.Replace(newUser.userPhone, @"\s", "");
 
-            //TO DO Hacer que el usuario arregle el error
-
-            if (isNameCorrect(nameFromUserForm) == false)
+            
+            oneOrMoreErrorInForm = false;
+            if (isNameCorrect(newUser.userName) == false)
             {
-                nameFromUserForm = nameFromUserForm + "  ERROR AL COMPROBAR NOMBRE";
+                errorLog = errorLog + "El nombre debe estar formado sólo por letras y tener menos de 50 caracteres. \n\n";                
+                oneOrMoreErrorInForm = true;
             }
 
-            if (isLastNameCorrect(lastNameFromUserForm) == false)
+            if (isLastNameCorrect(newUser.userLastName) == false)
             {
-                lastNameFromUserForm = lastNameFromUserForm + "  ERROR AL COMPROBAR APELLIDO";
+                errorLog = errorLog + "El apellido debe estar formado sólo por letras y tener menos de 80 caracteres. \n\n";                
+                oneOrMoreErrorInForm = true;
             }
 
-            if (isAgeCorrect(ageFromUserForm) == false)
+            if (isDNICorrect(newUser.userDNI) == false)
             {
-                ageFromUserForm = ageFromUserForm + "  ERROR AL COMPROBAR EDAD";
-            }
-            if (isPhoneNumberCorrect(phoneNumberFromUserForm) == false)
-            {
-                phoneNumberFromUserForm = phoneNumberFromUserForm + "  ERROR AL COMPROBAR TELEFONO";
+                errorLog = errorLog + "El DNI debe constar de 8 números y una única letra al final. \n\n";
+                oneOrMoreErrorInForm = true;
             }
 
-            if (isDNICorrect(dniFromUserForm) == false)
+            if (isDNIRepeated(newUser.userDNI) == true)
             {
-                dniFromUserForm = dniFromUserForm + "  ERROR AL COMPROBAR DNI";
+                errorLog = errorLog + "Ese DNI ya esta registrado. \n\n";
+                oneOrMoreErrorInForm = true;
+            }
+         if (isAgeCorrect(newUser.userAge) == false)
+            {
+                errorLog = errorLog + "La edad debe estar formada sólo por números comprendidos entre 18 y 100. \n\n";                
+                oneOrMoreErrorInForm = true;
             }
 
+            if (isEmailCorrect(newUser.userEmail) == false)
+            {
+                errorLog = errorLog + "El formato del email no es correcto. \n\n";
+                oneOrMoreErrorInForm = true;
+            }
 
-            CreateNewUserTextFiles(nameFromUserForm, lastNameFromUserForm, dniFromUserForm, ageFromUserForm, emailFromUserForm, phoneNumberFromUserForm);
+            if (isPhoneNumberCorrect(newUser.userPhone) == false)
+            {
+                errorLog = errorLog + "El número de teléfono debe estar formado sólo por números y tener 9 dígitos. \n";                
+                oneOrMoreErrorInForm = true;
+            }
+                        
 
-            this.Close();
+            /*
+             * Si no ha habido ningún error creamos el registro, si no, mostramos mensaje de error
+             */
+            if (oneOrMoreErrorInForm == false)
+            {
+                CreateNewUserTextFiles(newUser.userName, newUser.userLastName, newUser.userDNI, newUser.userAge, newUser.userEmail, newUser.userPhone, newUser.userLaterality, newUser.userID);
+                incrementNumberOfUserID();
+                this.Close();
 
+                //TO DO En el caso de usuarios genuinos, ahora vendría la captura de firma
+            }
+            else
+            {
+                errorLog = "Se encontraron los siguientes errores, por favor, revíselo \n\n\n" + errorLog; 
+                System.Windows.Forms.MessageBox.Show(errorLog,"Error al introducir los datos en el formulario");
+            }
+            
         }
 
-        private static void CreateNewUserTextFiles(string name, string lastName, string dni, string age, string email, string phone)
+        private static void CreateNewUserTextFiles(string name, string lastName, string dni, string age, string email, string phone, string laterality, int id)
         {
             
                 string fileName;               
             
-                fileName = "usuario_prueba";
-                string newUserDirectory = @"D:\Laura\Uni\Curso 2014-2015\Trabajo Fin de Grado\Código\Pruebas\Usuario_PRUEBA";
+                //TO DO el ID tiene que aparecer en formato XXXXX, ej: 00003, 00156...
+
+                fileName = "usuario" + id ;                
+                string newUserDirectory = directoryDependingOnUserType + @"\Usuario_" + id; ;
                 Directory.CreateDirectory(newUserDirectory);
 
+                string[] linesInTextFile = { dni, name, lastName, age, email, phone, laterality };
 
-                string[] linesInTextFile = { dni, name, lastName, age, email, phone };
-
-                System.IO.File.WriteAllLines(newUserDirectory + @"\" + fileName + ".txt", linesInTextFile);
+                System.IO.File.WriteAllLines(newUserDirectory + @"\"+ fileName + ".txt", linesInTextFile);
            
         }
 
-        //TO DO funcion que junte todas las comprobaciones
-        private string[] checkFormatOfAllParameters(string name, string lastName, string dni, string age, string email, string phone)
-        {
-            
-            string[] allParameters = { name, lastName, dni, age, email, phone };
-            
-            return allParameters ;
 
+        //TO DO funcion que junte todas las comprobaciones
+        private void checkFormatOfAllParameters(string name, string lastName, string dni, string age, string email, string phone)
+        {          
+          
         }
 
-        private static bool isDNICorrect(string dni)
+
+
+        private bool isDNIRepeated(string dni)
+        {
+            string FirstLineOfFileToRead;
+            string searchingDirectory = directoryDependingOnUserType;
+            int numberOfUsersRegistered = getUserID();
+            
+            //TO DO poner bonito try-catch as clean code 
+
+            for(int i = 0; i < numberOfUsersRegistered; i++)
+            {
+                try
+                {                                   
+                    using (StreamReader reader = new StreamReader(searchingDirectory + @"\Usuario_" + i +  @"\usuario" + i + ".txt"))
+                    {
+                        FirstLineOfFileToRead = reader.ReadLine();
+                        if (FirstLineOfFileToRead == dni)
+                        {
+                            return true;
+                        }
+                    }
+                }
+
+                catch (Exception e)
+                {
+                throw new Exception(String.Format("An error ocurred while executing the data import: {0}", e.Message), e);
+                }
+
+            }
+
+            return false;
+        }
+
+        private bool isDNICorrect(string dni)
         {       
             string patternNumber = "[0-9]";
             string patternLetter = "[A-Z]";
@@ -115,7 +219,9 @@ namespace SignatureForgers
                 string dniLetter = dni.Substring(8, 1);
                 dniLetter = dniLetter.ToUpper();
 
-                //Si la los primeros 8 caracteres son números y el último una letra es correcto
+                /*
+                 * Si la los primeros 8 caracteres son números y el último una letra es correcto
+                 */ 
                 if (Regex.IsMatch(dniNumbers, patternNumber) && Regex.IsMatch(dniLetter, patternLetter))
                 {
                     return true;
@@ -129,9 +235,9 @@ namespace SignatureForgers
 
         private bool isNameCorrect(string name)
         {
-            string patternLetter = "[a-zA-Z]";
+            string patternLetter = @"^[a-zA-Z_áéíóúñ\s]*$";
 
-            if (Regex.IsMatch(name, patternLetter) && name.Length <= 50)
+            if (Regex.IsMatch(name, patternLetter) && name.Length <= 50 && name.Length > 0)
             {
                 return true;
             }
@@ -141,9 +247,9 @@ namespace SignatureForgers
 
         private bool isLastNameCorrect(string lastName)
         {
-            string patternLetter = "[a-zA-Z]";
+            string patternLetter = @"^[a-zA-Z_áéíóúñ\s]*$";
 
-            if (Regex.IsMatch(lastName, patternLetter) && lastName.Length <= 80)
+            if (Regex.IsMatch(lastName, patternLetter) && lastName.Length <= 80 && lastName.Length > 0)
             {
                 return true;
             }
@@ -156,10 +262,14 @@ namespace SignatureForgers
             int ageNumber;         
             string patternNumber = "[0-9]";
 
-            //Si el string solo está formado por números
+            /*
+             * Si el string solo está formado por números
+             */ 
             if (Regex.IsMatch(age, patternNumber))
             {                
-                //Convertimos el string a int, y si es correcto, hacemos la comprobación de edad
+                /*
+                 * Convertimos el string a int, y si es correcto, hacemos la comprobación de edad
+                 */ 
                 if (Int32.TryParse(age, out ageNumber))
                 {
                     if (ageNumber >= 18 && ageNumber <= 100)
@@ -187,13 +297,45 @@ namespace SignatureForgers
 
         private bool isEmailCorrect(string email)
         {                        
-            //expresión regular sacada de la web de msdn
+            /*
+             * expresión regular sacada de la web de msdn
+             */
             return Regex.IsMatch(email,
              @"^(?("")("".+?""@)|(([0-9a-zA-Z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-zA-Z])@))" +
              @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,6}))$"); 
                         
         }
 
+        private int getUserID()
+        {
+            int userID;
+            string fileName = directoryDependingOnUserType + @"\contadorIDs.txt";
+            string IDFromTxt = System.IO.File.ReadAllText(fileName);
+            
+            if (Int32.TryParse(IDFromTxt, out userID))
+            {
+                return userID;
+            }
+
+            return 0;
+        }
+
+        private void incrementNumberOfUserID()
+        {
+            string idToTxt;
+            int highestID;
+            string fileName = directoryDependingOnUserType + @"\contadorIDs.txt";
+            
+            highestID = getUserID();
+            highestID++;
+            idToTxt = Convert.ToString(highestID);
+
+            using (StreamWriter writer = new StreamWriter(fileName, false, Encoding.UTF8))
+            {
+                writer.Write(idToTxt);
+            }
+
+        }
 
     }
 }

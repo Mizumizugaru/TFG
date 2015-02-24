@@ -12,14 +12,16 @@ namespace SignatureForgers
 {
     public partial class PantallaRegistro : Form
     {
+        
         public PantallaRegistro()
         {
             InitializeComponent();
         }
 
+
         private void nuevoUsuarioGen_Click(object sender, EventArgs e)
         {
-            NuevoUsuario nuevoGen = new NuevoUsuario();
+            NuevoUsuario nuevoGen = new NuevoUsuario("Genuino");
             nuevoGen.Show();
 
         }
@@ -31,8 +33,8 @@ namespace SignatureForgers
         }
 
         private void nuevoUsuarioFal_Click(object sender, EventArgs e)
-        {
-            NuevoUsuario nuevoFal = new NuevoUsuario();
+        {            
+            NuevoUsuario nuevoFal = new NuevoUsuario("Falsificador");
             nuevoFal.Show();
 
         }
