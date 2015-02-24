@@ -34,7 +34,7 @@ namespace SignatureForgers
 
         private void botonFalsificar_Click(object sender, EventArgs e)
         {
-            LoginUsuarioRegistrado Login = new LoginUsuarioRegistrado();
+            LoginUsuarioRegistrado Login = new LoginUsuarioRegistrado("Falsificador");
             Login.Show();
         }
 

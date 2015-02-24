@@ -25,8 +25,11 @@ namespace SignatureForgers
 
         //DUDA ¿Por qué sólo me dejaba llamarla abajo si era static??
        public static string directoryDependingOnUserType = @"D:\Laura\Uni\Curso 2014-2015\Trabajo Fin de Grado\Código\Pruebas";
-              
-                
+
+
+        /*
+        * Entramos en una carpeta u otra según si es usuario falsificador o genuino          
+        */        
         public NuevoUsuario(string userType)
         {
             if (userType == "Falsificador")
@@ -82,10 +85,12 @@ namespace SignatureForgers
             /*
              * Eliminamos los espacios
              */
-            newUser.userDNI = Regex.Replace(newUser.userDNI, @"\s", "");
+            newUser.userDNI = Regex.Replace(newUser.userDNI, @"\s", "");            
             newUser.userAge = Regex.Replace(newUser.userAge, @"\s", "");
             newUser.userEmail = Regex.Replace(newUser.userEmail, @"\s", "");
             newUser.userPhone = Regex.Replace(newUser.userPhone, @"\s", "");
+
+            newUser.userDNI = newUser.userDNI.ToUpper();
 
             
             oneOrMoreErrorInForm = false;
@@ -144,8 +149,9 @@ namespace SignatureForgers
             }
             else
             {
-                errorLog = "Se encontraron los siguientes errores, por favor, revíselo \n\n\n" + errorLog; 
-                System.Windows.Forms.MessageBox.Show(errorLog,"Error al introducir los datos en el formulario");
+                errorLog = "Se encontraron los siguientes errores, por favor, revíselo \n\n\n" + errorLog;
+                string messageBoxTitle = "Error al introducir los datos en el formulario";
+                MessageBox.Show(errorLog, messageBoxTitle);
             }
             
         }

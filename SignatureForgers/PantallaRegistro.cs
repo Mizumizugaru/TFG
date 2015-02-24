@@ -28,7 +28,7 @@ namespace SignatureForgers
 
         private void usuarioRegistradoGen_Click(object sender, EventArgs e)
         {
-            LoginUsuarioRegistrado loginGen = new LoginUsuarioRegistrado();
+            LoginUsuarioRegistrado loginGen = new LoginUsuarioRegistrado("Genuino");
             loginGen.Show();
         }
 
@@ -41,7 +41,7 @@ namespace SignatureForgers
 
         private void usuarioRegistradoFal_Click(object sender, EventArgs e)
         {
-            LoginUsuarioRegistrado loginFal = new LoginUsuarioRegistrado();
+            LoginUsuarioRegistrado loginFal = new LoginUsuarioRegistrado("Falsificador");
             loginFal.Show();
         }
     }
