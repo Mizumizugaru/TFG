@@ -35,7 +35,7 @@
             // 
             // botonConfiguracion
             // 
-            this.botonConfiguracion.Location = new System.Drawing.Point(68, 158);
+            this.botonConfiguracion.Location = new System.Drawing.Point(80, 160);
             this.botonConfiguracion.Name = "botonConfiguracion";
             this.botonConfiguracion.Size = new System.Drawing.Size(135, 42);
             this.botonConfiguracion.TabIndex = 0;
@@ -45,21 +45,21 @@
             // 
             // botonFalsificar
             // 
-            this.botonFalsificar.Location = new System.Drawing.Point(68, 101);
+            this.botonFalsificar.Location = new System.Drawing.Point(80, 103);
             this.botonFalsificar.Name = "botonFalsificar";
             this.botonFalsificar.Size = new System.Drawing.Size(135, 42);
             this.botonFalsificar.TabIndex = 2;
-            this.botonFalsificar.Text = "Falsificar";
+            this.botonFalsificar.Text = "Usuario falsificador";
             this.botonFalsificar.UseVisualStyleBackColor = true;
             this.botonFalsificar.Click += new System.EventHandler(this.botonFalsificar_Click);
             // 
             // BotonRegistro
             // 
-            this.BotonRegistro.Location = new System.Drawing.Point(68, 40);
+            this.BotonRegistro.Location = new System.Drawing.Point(80, 42);
             this.BotonRegistro.Name = "BotonRegistro";
             this.BotonRegistro.Size = new System.Drawing.Size(135, 42);
             this.BotonRegistro.TabIndex = 3;
-            this.BotonRegistro.Text = "Registro";
+            this.BotonRegistro.Text = "Usuario genuino";
             this.BotonRegistro.UseVisualStyleBackColor = true;
             this.BotonRegistro.Click += new System.EventHandler(this.botonRegistro_Click);
             // 
@@ -68,10 +68,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSlateGray;
-            this.ClientSize = new System.Drawing.Size(288, 229);
+            this.ClientSize = new System.Drawing.Size(327, 267);
             this.Controls.Add(this.BotonRegistro);
             this.Controls.Add(this.botonFalsificar);
             this.Controls.Add(this.botonConfiguracion);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(343, 305);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(343, 305);
             this.Name = "PrimeraPantalla";
             this.Text = "PrimeraPantalla";
             this.ResumeLayout(false);

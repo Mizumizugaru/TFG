@@ -2,7 +2,6 @@ c:\users\laura\documents\visual studio 2013\Projects\SignatureForgers\SignatureF
 C:\Users\Laura\documents\visual studio 2013\Projects\SignatureForgers\SignatureForgers\bin\Debug\SignatureForgers.exe
 C:\Users\Laura\documents\visual studio 2013\Projects\SignatureForgers\SignatureForgers\bin\Debug\SignatureForgers.pdb
 C:\Users\Laura\documents\visual studio 2013\Projects\SignatureForgers\SignatureForgers\obj\Debug\SignatureForgers.csprojResolveAssemblyReference.cache
-C:\Users\Laura\documents\visual studio 2013\Projects\SignatureForgers\SignatureForgers\obj\Debug\SignatureForgers.ErrorRegistroUsuario.resources
 C:\Users\Laura\documents\visual studio 2013\Projects\SignatureForgers\SignatureForgers\obj\Debug\SignatureForgers.LoginUsuarioRegistrado.resources
 C:\Users\Laura\documents\visual studio 2013\Projects\SignatureForgers\SignatureForgers\obj\Debug\SignatureForgers.NuevoUsuario.resources
 C:\Users\Laura\documents\visual studio 2013\Projects\SignatureForgers\SignatureForgers\obj\Debug\SignatureForgers.PrimeraPantalla.resources
@@ -13,3 +12,6 @@ C:\Users\Laura\documents\visual studio 2013\Projects\SignatureForgers\SignatureF
 C:\Users\Laura\documents\visual studio 2013\Projects\SignatureForgers\SignatureForgers\obj\Debug\SignatureForgers.pdb
 C:\Users\Laura\documents\visual studio 2013\Projects\SignatureForgers\SignatureForgers\obj\Debug\SignatureForgers.PantallaRegistro.resources
 C:\Users\Laura\documents\visual studio 2013\Projects\SignatureForgers\SignatureForgers\obj\Debug\SignatureForgers.Configuracion.resources
+C:\Users\Laura\documents\visual studio 2013\Projects\SignatureForgers\SignatureForgers\obj\Debug\SignatureForgers.NivelesDeFirma.resources
+C:\Users\Laura\documents\visual studio 2013\Projects\SignatureForgers\SignatureForgers\obj\Debug\SignatureForgers.CapturandoFirmaGenuina.resources
+C:\Users\Laura\documents\visual studio 2013\Projects\SignatureForgers\SignatureForgers\obj\Debug\SignatureForgers.EleccionGenuinoAFalsificar.resources

@@ -16,19 +16,22 @@ namespace SignatureForgers
     {
         public static string directoryDependingOnUserType = @"D:\Laura\Uni\Curso 2014-2015\Trabajo Fin de Grado\Código\Pruebas";
         public static int idToEnterApp;
+        public string userType = "";
 
         /*
          * Entramos en una carpeta u otra según si es usuario falsificador o genuino          
          */
-        public LoginUsuarioRegistrado(string userType)
+        public LoginUsuarioRegistrado(string type)
         {
-            if (userType == "Falsificador")
+            if (type == "Falsificador")
             {
                 directoryDependingOnUserType = @"D:\Laura\Uni\Curso 2014-2015\Trabajo Fin de Grado\Código\Pruebas\Falsificadores";
+                userType = "Falsificador";
             }
             else
             {
                 directoryDependingOnUserType = @"D:\Laura\Uni\Curso 2014-2015\Trabajo Fin de Grado\Código\Pruebas\Genuinos";
+                userType = "Genuino";
             }
 
             InitializeComponent();
@@ -43,19 +46,53 @@ namespace SignatureForgers
 
         private void buttonAccept_Click(object sender, EventArgs e)
         {
+            /*
+             * Buscamos preferiblemente por ID, salvo que el campo esté vacío,
+             * entonces buscaremos por DNI.
+             * Si existe vamos a la pantalla de captura de firma correspondiente.
+             */
 
             if (textBoxID.Text == "")
             {
-                SearchForExistingUserByDNI();
+
+                if (SearchForExistingUserByDNI() == true)
+                {
+                    this.Close();
+
+                    if (userType == "Falsificador")
+                    {
+                        EleccionGenuinoAFalsificar eleccionGenuino = new EleccionGenuinoAFalsificar();
+                        eleccionGenuino.Show();
+                    }
+                    else
+                    {
+                        CapturandoFirmaGenuina capturaGenuina = new CapturandoFirmaGenuina();
+                        capturaGenuina.Show();
+                    }
+                }
             }
             else
             {
-                SearchForExistingUserByID();
+                if (SearchForExistingUserByID() == true)
+                {
+                    this.Close();
+
+                    if (userType == "Falsificador")
+                    {
+                        EleccionGenuinoAFalsificar eleccionGenuino = new EleccionGenuinoAFalsificar();
+                        eleccionGenuino.Show();
+                    }
+                    else
+                    {
+                        CapturandoFirmaGenuina capturaGenuina = new CapturandoFirmaGenuina();
+                        capturaGenuina.Show();
+                    }
+                }
             }
             
         }
 
-        private void SearchForExistingUserByDNI()
+        private bool SearchForExistingUserByDNI()
         {
             string dniToSearch = textBoxDNI.Text;
                         
@@ -67,19 +104,21 @@ namespace SignatureForgers
                 string message = "El DNI introducido no se encuentra registrado, por favor, revíselo o regístrese primero";
                 string messageBoxTitle = "DNI incorrecto";
                 MessageBox.Show(message, messageBoxTitle);
+                return true;
 
-                //TO DO Entrar a la pantalla de falsificación
+                
             }
             else
             {
                 string message = "Hola usuario " + Convert.ToString(idToEnterApp); ;
                 string messageBoxTitle = "DNI correcto";
                 MessageBox.Show(message, messageBoxTitle);
+                return false;
             }
 
         }
 
-        private void SearchForExistingUserByID()
+        private bool SearchForExistingUserByID()
         {
             
             string idToSearch = textBoxID.Text;
@@ -91,8 +130,8 @@ namespace SignatureForgers
                 string message = "Hola usuario " + idToSearch;
                 string messageBoxTitle = "ID correcto";
                 MessageBox.Show(message, messageBoxTitle);
-
-                //TO DO Entrar a la pantalla de falsificación
+                return true;
+                                
             }
             else
             {
@@ -104,7 +143,7 @@ namespace SignatureForgers
                  * (Solo busca por DNI, si el campo de texto de ID está vacío)
                  */
                 textBoxID.Text = "";
-
+                return false;
             }
            
         }

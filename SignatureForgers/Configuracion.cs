@@ -16,5 +16,57 @@ namespace SignatureForgers
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string errorLog = "";
+            
+            int numeroMuestrasGenuinas;
+            int numeroMuestrasPorNivel;
+            int minutosEntreNivel8y9;
+            int minutosEntreNivel9y10;
+
+            if (Int32.TryParse(textBoxNumeroMuestrasGenuino.Text, out numeroMuestrasGenuinas) == false) 
+            {
+                errorLog = errorLog + "Error al convertir a int el número de muestras genuinas \n\n";
+            }
+
+            if (Int32.TryParse(textBoxNumeroMuestrasNiveles.Text, out numeroMuestrasPorNivel) == false)
+            {
+                errorLog = errorLog + "Error al convertir a int el número de muestras por niveles \n\n";
+            }
+
+            if (Int32.TryParse(textBoxMinEntre8y9.Text, out minutosEntreNivel8y9) == false)
+            {
+                errorLog = errorLog + "Error al convertir a int los minutos entre nivel 8 y 9 \n\n";
+            }
+
+            if (Int32.TryParse(textBoxMinEntre9y10.Text, out minutosEntreNivel9y10) == false)
+            {
+                errorLog = errorLog + "Error al convertir a int los minutos entre nivel 9 y 10 \n\n";
+            }
+
+            /*
+             * ¿Cual es el rango de valores a dar al algoritmo estático?
+             */
+
+
+            //TO DO que los valores de aquí sirvan para la pantalla de niveles
+
+            if (errorLog == "")
+            {
+                string message = "Configuración correcta";
+                string messageBoxTitle = "Datos introducidos";
+                MessageBox.Show(message, messageBoxTitle);
+
+            }
+            else
+            {
+                string message = "Configuración incorrecta!!";
+                string messageBoxTitle = "Datos introducidos";
+                MessageBox.Show(message, messageBoxTitle);
+            }
+            
+        }
     }
 }

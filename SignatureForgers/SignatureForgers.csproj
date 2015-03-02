@@ -44,23 +44,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CapturandoFirmaGenuina.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CapturandoFirmaGenuina.Designer.cs">
+      <DependentUpon>CapturandoFirmaGenuina.cs</DependentUpon>
+    </Compile>
     <Compile Include="Configuracion.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Configuracion.Designer.cs">
       <DependentUpon>Configuracion.cs</DependentUpon>
     </Compile>
-    <Compile Include="ErrorRegistroUsuario.cs">
+    <Compile Include="EleccionGenuinoAFalsificar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ErrorRegistroUsuario.Designer.cs">
-      <DependentUpon>ErrorRegistroUsuario.cs</DependentUpon>
+    <Compile Include="EleccionGenuinoAFalsificar.Designer.cs">
+      <DependentUpon>EleccionGenuinoAFalsificar.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginUsuarioRegistrado.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LoginUsuarioRegistrado.Designer.cs">
       <DependentUpon>LoginUsuarioRegistrado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NivelesDeFirma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NivelesDeFirma.Designer.cs">
+      <DependentUpon>NivelesDeFirma.cs</DependentUpon>
     </Compile>
     <Compile Include="NuevoUsuario.cs">
       <SubType>Form</SubType>
@@ -82,6 +94,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Prueba.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Prueba.Designer.cs">
+      <DependentUpon>Prueba.cs</DependentUpon>
+    </Compile>
     <Compile Include="Usuario.cs" />
     <Compile Include="UsuarioRegistradoCorrectamente.cs">
       <SubType>Form</SubType>
@@ -89,14 +107,20 @@
     <Compile Include="UsuarioRegistradoCorrectamente.Designer.cs">
       <DependentUpon>UsuarioRegistradoCorrectamente.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CapturandoFirmaGenuina.resx">
+      <DependentUpon>CapturandoFirmaGenuina.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Configuracion.resx">
       <DependentUpon>Configuracion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ErrorRegistroUsuario.resx">
-      <DependentUpon>ErrorRegistroUsuario.cs</DependentUpon>
+    <EmbeddedResource Include="EleccionGenuinoAFalsificar.resx">
+      <DependentUpon>EleccionGenuinoAFalsificar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginUsuarioRegistrado.resx">
       <DependentUpon>LoginUsuarioRegistrado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NivelesDeFirma.resx">
+      <DependentUpon>NivelesDeFirma.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NuevoUsuario.resx">
       <DependentUpon>NuevoUsuario.cs</DependentUpon>

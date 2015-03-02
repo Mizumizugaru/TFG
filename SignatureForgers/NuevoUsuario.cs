@@ -22,6 +22,7 @@ namespace SignatureForgers
        public string phoneNumberFromUserForm = "666111666";
        public string lateralityFromUserForm = "lateralidad prueba";
        public int userID = 0;
+       public string userType = "";
 
         //DUDA ¿Por qué sólo me dejaba llamarla abajo si era static??
        public static string directoryDependingOnUserType = @"D:\Laura\Uni\Curso 2014-2015\Trabajo Fin de Grado\Código\Pruebas";
@@ -30,15 +31,17 @@ namespace SignatureForgers
         /*
         * Entramos en una carpeta u otra según si es usuario falsificador o genuino          
         */        
-        public NuevoUsuario(string userType)
+        public NuevoUsuario(string type)
         {
-            if (userType == "Falsificador")
+            if (type == "Falsificador")
             {
                 directoryDependingOnUserType = @"D:\Laura\Uni\Curso 2014-2015\Trabajo Fin de Grado\Código\Pruebas\Falsificadores";
+                userType = "Falsificador";
             }
             else
             {
                 directoryDependingOnUserType = @"D:\Laura\Uni\Curso 2014-2015\Trabajo Fin de Grado\Código\Pruebas\Genuinos";
+                userType = "Genuino";
             }
 
             InitializeComponent();
@@ -49,6 +52,7 @@ namespace SignatureForgers
         {
             bool oneOrMoreErrorInForm;
             string errorLog = "";
+            string successMessage = "";
 
             nameFromUserForm = textBoxName.Text;
             lastNameFromUserForm = textBoxSurname.Text;
@@ -73,7 +77,6 @@ namespace SignatureForgers
                 errorLog = errorLog + "No ha seleccionado su lateralidad. \n\n";
                 oneOrMoreErrorInForm = true;
             }
-
                                     
             userID = getUserID();
 
@@ -133,8 +136,7 @@ namespace SignatureForgers
             {
                 errorLog = errorLog + "El número de teléfono debe estar formado sólo por números y tener 9 dígitos. \n";                
                 oneOrMoreErrorInForm = true;
-            }
-                        
+            }                        
 
             /*
              * Si no ha habido ningún error creamos el registro, si no, mostramos mensaje de error
@@ -143,9 +145,15 @@ namespace SignatureForgers
             {
                 CreateNewUserTextFiles(newUser.userName, newUser.userLastName, newUser.userDNI, newUser.userAge, newUser.userEmail, newUser.userPhone, newUser.userLaterality, newUser.userID);
                 incrementNumberOfUserID();
+
+                successMessage = " Registro correcto.\n\n Su ID es: " + userID;
+                string messageBoxTitle = "Registro correcto";
+                MessageBox.Show(successMessage, messageBoxTitle);
+
                 this.Close();
 
-                //TO DO En el caso de usuarios genuinos, ahora vendría la captura de firma
+                prepareForGettingSignature(userType);
+                                
             }
             else
             {
@@ -340,6 +348,25 @@ namespace SignatureForgers
             {
                 writer.Write(idToTxt);
             }
+
+        }
+
+
+        private void prepareForGettingSignature(string type)
+        {
+            if (type == "Falsificador")
+            {
+                EleccionGenuinoAFalsificar eleccionGenuino = new EleccionGenuinoAFalsificar();
+                eleccionGenuino.Show();
+
+            }
+            else
+            {
+                CapturandoFirmaGenuina capturaFirmaGenuina = new CapturandoFirmaGenuina();
+                capturaFirmaGenuina.Show();
+
+            }
+
 
         }
 
