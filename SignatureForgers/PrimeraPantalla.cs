@@ -17,25 +17,29 @@ namespace SignatureForgers
             InitializeComponent();
         }
 
-        private void botonRegistro_Click(object sender, EventArgs e)
+        private void botonGenuino_Click(object sender, EventArgs e)
         {
+         
+            LoginUsuarioRegistrado loginGenuino = new LoginUsuarioRegistrado("Genuino");
+            loginGenuino.Show();
             
-            PantallaRegistro PantallaRegistro = new PantallaRegistro();
-            PantallaRegistro.Show();
-
+            
         }
 
         private void botonConfiguracion_Click(object sender, EventArgs e)
         {
+            
             Configuracion Configuracion = new Configuracion();
             Configuracion.Show();
-
+            
         }
 
         private void botonFalsificar_Click(object sender, EventArgs e)
         {
-            LoginUsuarioRegistrado Login = new LoginUsuarioRegistrado("Falsificador");
-            Login.Show();
+           
+            LoginUsuarioRegistrado LoginFalsificador = new LoginUsuarioRegistrado("Falsificador");
+            LoginFalsificador.Show();
+            
         }
 
 

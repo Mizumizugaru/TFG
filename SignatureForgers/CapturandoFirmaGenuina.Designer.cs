@@ -70,6 +70,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(484, 259);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(484, 259);
             this.Name = "CapturandoFirmaGenuina";
             this.Text = "CapturandoFirmaGenuina";
             this.ResumeLayout(false);

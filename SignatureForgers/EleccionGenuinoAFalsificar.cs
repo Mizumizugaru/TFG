@@ -16,5 +16,11 @@ namespace SignatureForgers
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            NivelesDeFirma niveles = new NivelesDeFirma();
+            niveles.Show();
+        }
     }
 }

@@ -6,7 +6,6 @@ C:\Users\Laura\documents\visual studio 2013\Projects\SignatureForgers\SignatureF
 C:\Users\Laura\documents\visual studio 2013\Projects\SignatureForgers\SignatureForgers\obj\Debug\SignatureForgers.NuevoUsuario.resources
 C:\Users\Laura\documents\visual studio 2013\Projects\SignatureForgers\SignatureForgers\obj\Debug\SignatureForgers.PrimeraPantalla.resources
 C:\Users\Laura\documents\visual studio 2013\Projects\SignatureForgers\SignatureForgers\obj\Debug\SignatureForgers.Properties.Resources.resources
-C:\Users\Laura\documents\visual studio 2013\Projects\SignatureForgers\SignatureForgers\obj\Debug\SignatureForgers.UsuarioRegistradoCorrectamente.resources
 C:\Users\Laura\documents\visual studio 2013\Projects\SignatureForgers\SignatureForgers\obj\Debug\SignatureForgers.csproj.GenerateResource.Cache
 C:\Users\Laura\documents\visual studio 2013\Projects\SignatureForgers\SignatureForgers\obj\Debug\SignatureForgers.exe
 C:\Users\Laura\documents\visual studio 2013\Projects\SignatureForgers\SignatureForgers\obj\Debug\SignatureForgers.pdb

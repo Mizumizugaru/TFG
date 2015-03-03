@@ -59,6 +59,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Empezar Falsificación";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
@@ -78,6 +79,10 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listBox1);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(510, 349);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(510, 349);
             this.Name = "EleccionGenuinoAFalsificar";
             this.Text = "EleccionGenuinoAFalsificar";
             this.ResumeLayout(false);

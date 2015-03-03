@@ -52,6 +52,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.textBoxMinEntre9y10 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -177,7 +178,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(155, 461);
+            this.button1.Location = new System.Drawing.Point(205, 462);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(93, 33);
             this.button1.TabIndex = 24;
@@ -249,11 +250,22 @@
             this.label5.TabIndex = 33;
             this.label5.Text = "Tiempo de espera en minutos entre el nivel 9 y el nivel 10";
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(42, 462);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(93, 33);
+            this.button2.TabIndex = 35;
+            this.button2.Text = "Volver";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Configuracion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(340, 524);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.textBoxMinEntre9y10);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBox11);
@@ -278,6 +290,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxNumeroMuestrasGenuino);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(356, 562);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(356, 562);
             this.Name = "Configuracion";
             this.Text = "Configuración";
             this.ResumeLayout(false);
@@ -311,5 +327,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox textBoxMinEntre9y10;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button2;
     }
 }

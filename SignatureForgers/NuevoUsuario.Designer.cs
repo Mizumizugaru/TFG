@@ -44,6 +44,7 @@
             this.radioButtonZurdo = new System.Windows.Forms.RadioButton();
             this.radioButtonDiestro = new System.Windows.Forms.RadioButton();
             this.buttonAccept = new System.Windows.Forms.Button();
+            this.buttonBack = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBoxName
@@ -183,11 +184,22 @@
             this.buttonAccept.UseVisualStyleBackColor = true;
             this.buttonAccept.Click += new System.EventHandler(this.buttonAccept_Click);
             // 
+            // buttonBack
+            // 
+            this.buttonBack.Location = new System.Drawing.Point(56, 324);
+            this.buttonBack.Name = "buttonBack";
+            this.buttonBack.Size = new System.Drawing.Size(122, 43);
+            this.buttonBack.TabIndex = 16;
+            this.buttonBack.Text = "Volver";
+            this.buttonBack.UseVisualStyleBackColor = true;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
+            // 
             // NuevoUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(465, 396);
+            this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.buttonAccept);
             this.Controls.Add(this.radioButtonDiestro);
             this.Controls.Add(this.radioButtonZurdo);
@@ -204,6 +216,10 @@
             this.Controls.Add(this.textBoxDNI);
             this.Controls.Add(this.textBoxAge);
             this.Controls.Add(this.textBoxName);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(481, 434);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(481, 434);
             this.Name = "NuevoUsuario";
             this.Text = "NuevoUsuario";
             this.ResumeLayout(false);
@@ -229,5 +245,6 @@
         private System.Windows.Forms.RadioButton radioButtonZurdo;
         private System.Windows.Forms.RadioButton radioButtonDiestro;
         private System.Windows.Forms.Button buttonAccept;
+        private System.Windows.Forms.Button buttonBack;
     }
 }

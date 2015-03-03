@@ -68,5 +68,13 @@ namespace SignatureForgers
             }
             
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            PrimeraPantalla inicio = new PrimeraPantalla();
+            inicio.Show();
+
+        }
     }
 }

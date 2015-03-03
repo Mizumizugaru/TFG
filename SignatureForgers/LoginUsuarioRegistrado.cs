@@ -41,6 +41,12 @@ namespace SignatureForgers
         private void buttonBack_Click(object sender, EventArgs e)
         {
             this.Close();
+            
+            // Lanzaría la primera pantalla si la habíamos cerrado al darle a registro
+            // Hasta que no lo consiga de momento queda comentado.
+           
+            //PrimeraPantalla inicio = new PrimeraPantalla();
+            //inicio.Show();
 
         }
 
@@ -104,7 +110,7 @@ namespace SignatureForgers
                 string message = "El DNI introducido no se encuentra registrado, por favor, revíselo o regístrese primero";
                 string messageBoxTitle = "DNI incorrecto";
                 MessageBox.Show(message, messageBoxTitle);
-                return true;
+                return false;
 
                 
             }
@@ -113,7 +119,7 @@ namespace SignatureForgers
                 string message = "Hola usuario " + Convert.ToString(idToEnterApp); ;
                 string messageBoxTitle = "DNI correcto";
                 MessageBox.Show(message, messageBoxTitle);
-                return false;
+                return true;
             }
 
         }
@@ -147,6 +153,25 @@ namespace SignatureForgers
             }
            
         }
+
+
+        private void buttonRegister_Click(object sender, EventArgs e)
+        {
+            if (userType == "Falsificador")
+            {
+                NuevoUsuario nuevoFal = new NuevoUsuario("Falsificador");
+                nuevoFal.Show();
+            }
+            else
+            {
+                NuevoUsuario nuevoGen = new NuevoUsuario("Genuino");
+                nuevoGen.Show();
+            }
+            this.Close();
+
+        }
+
+
 
         /*
          *  isDNIRepeated() y getUserID() iguales que en NuevoUsuario.cs
@@ -198,6 +223,6 @@ namespace SignatureForgers
 
             return 0;
         }
-
+        
     }
 }

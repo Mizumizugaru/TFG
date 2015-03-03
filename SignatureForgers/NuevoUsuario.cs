@@ -370,5 +370,13 @@ namespace SignatureForgers
 
         }
 
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            LoginUsuarioRegistrado vueltaLogin = new LoginUsuarioRegistrado(userType);
+            vueltaLogin.Show();
+
+        }
+
     }
 }

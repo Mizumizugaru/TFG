@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,13 +43,6 @@
             this.panel1.Size = new System.Drawing.Size(469, 499);
             this.panel1.TabIndex = 1;
             // 
-            // panel2
-            // 
-            this.panel2.Location = new System.Drawing.Point(16, 22);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(220, 498);
-            this.panel2.TabIndex = 2;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -60,6 +53,13 @@
             this.label1.Text = "Aquí iría la imagen de la firma o el video de la firma, variando segun el nivel\r\n" +
     "";
             // 
+            // panel2
+            // 
+            this.panel2.Location = new System.Drawing.Point(16, 22);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(220, 498);
+            this.panel2.TabIndex = 2;
+            // 
             // NivelesDeFirma
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -67,6 +67,10 @@
             this.ClientSize = new System.Drawing.Size(753, 545);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(769, 583);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(769, 583);
             this.Name = "NivelesDeFirma";
             this.Text = "NivelesDeFirma";
             this.panel1.ResumeLayout(false);
