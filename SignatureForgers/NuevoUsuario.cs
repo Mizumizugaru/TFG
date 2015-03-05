@@ -21,11 +21,11 @@ namespace SignatureForgers
        public string emailFromUserForm = "email@prueba.es";
        public string phoneNumberFromUserForm = "666111666";
        public string lateralityFromUserForm = "lateralidad prueba";
-       public int userID = 0;
+       public int userID = 1;
        public string userType = "";
 
         //DUDA ¿Por qué sólo me dejaba llamarla abajo si era static??
-       public static string directoryDependingOnUserType = @"D:\Laura\Uni\Curso 2014-2015\Trabajo Fin de Grado\Código\Pruebas";
+       public static string nameOfDirectoryDependingOnUserType = @"C:\";
 
 
         /*
@@ -33,16 +33,38 @@ namespace SignatureForgers
         */        
         public NuevoUsuario(string type)
         {
+            string executablePath = Application.StartupPath;
+
             if (type == "Falsificador")
             {
-                directoryDependingOnUserType = @"D:\Laura\Uni\Curso 2014-2015\Trabajo Fin de Grado\Código\Pruebas\Falsificadores";
+                nameOfDirectoryDependingOnUserType = executablePath + @"\Falsificadores";
+
+                bool directoryExists = Directory.Exists(nameOfDirectoryDependingOnUserType);
+
+                if (!directoryExists)
+                {
+                    Directory.CreateDirectory(nameOfDirectoryDependingOnUserType);
+                }
+
                 userType = "Falsificador";
+                this.Text = "Nuevo Usuario Falsificador";
             }
             else
             {
-                directoryDependingOnUserType = @"D:\Laura\Uni\Curso 2014-2015\Trabajo Fin de Grado\Código\Pruebas\Genuinos";
+                nameOfDirectoryDependingOnUserType = executablePath + @"\Genuinos";
+
+                bool directoryExists = Directory.Exists(nameOfDirectoryDependingOnUserType);
+
+                if (!directoryExists)
+                {
+                    Directory.CreateDirectory(nameOfDirectoryDependingOnUserType);
+                }
+                
                 userType = "Genuino";
+                this.Text = "Nuevo Usuario Genuino";
             }
+
+            
 
             InitializeComponent();
             
@@ -79,6 +101,11 @@ namespace SignatureForgers
             }
                                     
             userID = getUserID();
+            if (userID == -1)
+            {
+                //Si hay error qué hago?
+                userID = 99999;
+            }
 
             Usuario newUser = new Usuario(nameFromUserForm, lastNameFromUserForm, dniFromUserForm, ageFromUserForm, phoneNumberFromUserForm, emailFromUserForm, lateralityFromUserForm, userID);
 
@@ -166,18 +193,19 @@ namespace SignatureForgers
 
         private static void CreateNewUserTextFiles(string name, string lastName, string dni, string age, string email, string phone, string laterality, int id)
         {
+            //TO DO el ID tiene que aparecer en formato XXXXX, ej: 00003, 00156...
+                
+            string fileName;                                    
+            string newUserDirectory;           
+
+            fileName = "usuario" + id ;
             
-                string fileName;               
-            
-                //TO DO el ID tiene que aparecer en formato XXXXX, ej: 00003, 00156...
+            newUserDirectory = nameOfDirectoryDependingOnUserType + @"\Usuario_" + id;                        
+            Directory.CreateDirectory(newUserDirectory);
 
-                fileName = "usuario" + id ;                
-                string newUserDirectory = directoryDependingOnUserType + @"\Usuario_" + id; ;
-                Directory.CreateDirectory(newUserDirectory);
+            string[] linesInTextFile = { dni, name, lastName, age, email, phone, laterality };
 
-                string[] linesInTextFile = { dni, name, lastName, age, email, phone, laterality };
-
-                System.IO.File.WriteAllLines(newUserDirectory + @"\"+ fileName + ".txt", linesInTextFile);
+            System.IO.File.WriteAllLines(newUserDirectory + @"\"+ fileName + ".txt", linesInTextFile);
            
         }
 
@@ -189,25 +217,37 @@ namespace SignatureForgers
         }
 
 
+        /*
+         *  isDNIRepeated() y getUserID() se repiten también en LoginUsuarioRegistrado.cs
+         *  si hay cambios, hay que hacerlos también en esas
+         */
 
         private bool isDNIRepeated(string dni)
         {
             string FirstLineOfFileToRead;
-            string searchingDirectory = directoryDependingOnUserType;
+            string searchingDirectory = nameOfDirectoryDependingOnUserType;
             int numberOfUsersRegistered = getUserID();
             
             //TO DO poner bonito try-catch as clean code 
 
-            for(int i = 0; i < numberOfUsersRegistered; i++)
+            for(int i = 1; i <= numberOfUsersRegistered; i++)
             {
                 try
-                {                                   
-                    using (StreamReader reader = new StreamReader(searchingDirectory + @"\Usuario_" + i +  @"\usuario" + i + ".txt"))
+                {
+                    /*
+                     * Leemos del archivo sólo si la carpeta existe
+                     * Si no existe es porque aun no se han creado usuarios, 
+                     * por tanto no habría DNIs repetidos tampoco
+                     */
+                    if (Directory.Exists(searchingDirectory + @"\Usuario_" + i))
                     {
-                        FirstLineOfFileToRead = reader.ReadLine();
-                        if (FirstLineOfFileToRead == dni)
+                        using (StreamReader reader = new StreamReader(searchingDirectory + @"\Usuario_" + i + @"\usuario" + i + ".txt"))
                         {
-                            return true;
+                            FirstLineOfFileToRead = reader.ReadLine();
+                            if (FirstLineOfFileToRead == dni)
+                            {
+                                return true;
+                            }
                         }
                     }
                 }
@@ -321,24 +361,38 @@ namespace SignatureForgers
         }
 
         private int getUserID()
-        {
-            int userID;
-            string fileName = directoryDependingOnUserType + @"\contadorIDs.txt";
-            string IDFromTxt = System.IO.File.ReadAllText(fileName);
-            
-            if (Int32.TryParse(IDFromTxt, out userID))
+        {            
+            string fileName = nameOfDirectoryDependingOnUserType + @"\contadorIDs.txt";
+            if(File.Exists(fileName))
             {
-                return userID;
-            }
+                string IDFromTxt;
+                
+                using (StreamReader reader = new StreamReader(fileName))
+                {
+                    IDFromTxt = reader.ReadLine();
+                }
 
-            return 0;
+                if (Int32.TryParse(IDFromTxt, out userID))
+                {
+                    return userID;
+                }
+
+                return -1;
+            }
+            else
+            {                
+                File.WriteAllText(fileName, "1");
+               
+                return 1;
+            }
+            
         }
 
         private void incrementNumberOfUserID()
         {
             string idToTxt;
             int highestID;
-            string fileName = directoryDependingOnUserType + @"\contadorIDs.txt";
+            string fileName = nameOfDirectoryDependingOnUserType + @"\contadorIDs.txt";
             
             highestID = getUserID();
             highestID++;
@@ -366,7 +420,6 @@ namespace SignatureForgers
                 capturaFirmaGenuina.Show();
 
             }
-
 
         }
 

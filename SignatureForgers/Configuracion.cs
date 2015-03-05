@@ -62,7 +62,7 @@ namespace SignatureForgers
             }
             else
             {
-                string message = "Configuración incorrecta!!";
+                string message = "Configuración incorrecta!!\n\n" + errorLog;
                 string messageBoxTitle = "Datos introducidos";
                 MessageBox.Show(message, messageBoxTitle);
             }
@@ -72,8 +72,8 @@ namespace SignatureForgers
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
-            PrimeraPantalla inicio = new PrimeraPantalla();
-            inicio.Show();
+            //PrimeraPantalla inicio = new PrimeraPantalla();
+            //inicio.Show();
 
         }
     }

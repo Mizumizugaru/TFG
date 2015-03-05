@@ -19,27 +19,47 @@ namespace SignatureForgers
 
         private void botonGenuino_Click(object sender, EventArgs e)
         {
-         
-            LoginUsuarioRegistrado loginGenuino = new LoginUsuarioRegistrado("Genuino");
-            loginGenuino.Show();
-            
+            Form checkingIfFormIsOpen = Application.OpenForms["LoginUsuarioRegistrado"];
+            if (checkingIfFormIsOpen != null)
+            {
+                checkingIfFormIsOpen.BringToFront();
+            }
+            else
+            {
+                LoginUsuarioRegistrado loginGenuino = new LoginUsuarioRegistrado("Genuino");
+                loginGenuino.Show();
+            }
             
         }
 
         private void botonConfiguracion_Click(object sender, EventArgs e)
         {
-            
-            Configuracion Configuracion = new Configuracion();
-            Configuracion.Show();
+            Form checkingIfFormIsOpen = Application.OpenForms["ConfiguracionPassword"];
+            if (checkingIfFormIsOpen != null)
+            {
+                checkingIfFormIsOpen.BringToFront();
+            }
+            else
+            {
+                ConfiguracionPassword configPass = new ConfiguracionPassword();
+                configPass.Show();
+            }
             
         }
 
         private void botonFalsificar_Click(object sender, EventArgs e)
         {
-           
-            LoginUsuarioRegistrado LoginFalsificador = new LoginUsuarioRegistrado("Falsificador");
-            LoginFalsificador.Show();
-            
+            Form checkingIfFormIsOpen = Application.OpenForms["LoginUsuarioRegistrado"];
+            if (checkingIfFormIsOpen != null)
+            {
+                checkingIfFormIsOpen.BringToFront();
+            }
+            else
+            {
+
+                LoginUsuarioRegistrado LoginFalsificador = new LoginUsuarioRegistrado("Falsificador");
+                LoginFalsificador.Show();
+            }
         }
 
 

@@ -14,3 +14,4 @@ C:\Users\Laura\documents\visual studio 2013\Projects\SignatureForgers\SignatureF
 C:\Users\Laura\documents\visual studio 2013\Projects\SignatureForgers\SignatureForgers\obj\Debug\SignatureForgers.NivelesDeFirma.resources
 C:\Users\Laura\documents\visual studio 2013\Projects\SignatureForgers\SignatureForgers\obj\Debug\SignatureForgers.CapturandoFirmaGenuina.resources
 C:\Users\Laura\documents\visual studio 2013\Projects\SignatureForgers\SignatureForgers\obj\Debug\SignatureForgers.EleccionGenuinoAFalsificar.resources
+C:\Users\Laura\Documents\Visual Studio 2013\Projects\SignatureForgers\SignatureForgers\obj\Debug\SignatureForgers.ConfiguracionPassword.resources

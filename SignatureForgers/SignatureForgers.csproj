@@ -56,6 +56,12 @@
     <Compile Include="Configuracion.Designer.cs">
       <DependentUpon>Configuracion.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConfiguracionPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfiguracionPassword.Designer.cs">
+      <DependentUpon>ConfiguracionPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="EleccionGenuinoAFalsificar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +106,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Configuracion.resx">
       <DependentUpon>Configuracion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfiguracionPassword.resx">
+      <DependentUpon>ConfiguracionPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EleccionGenuinoAFalsificar.resx">
       <DependentUpon>EleccionGenuinoAFalsificar.cs</DependentUpon>

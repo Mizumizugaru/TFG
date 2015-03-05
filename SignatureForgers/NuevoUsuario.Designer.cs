@@ -221,7 +221,6 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(481, 434);
             this.Name = "NuevoUsuario";
-            this.Text = "NuevoUsuario";
             this.ResumeLayout(false);
             this.PerformLayout();
 
