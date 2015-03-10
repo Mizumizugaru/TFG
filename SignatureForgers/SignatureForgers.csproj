@@ -32,6 +32,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="fullformatinterop, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\fullformatinterop.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.wgssSTU, Version=2.1.3.0, Culture=neutral, PublicKeyToken=20000022810869de, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>.\Interop.wgssSTU.dll</HintPath>
+    </Reference>
+    <Reference Include="SignCaptureWacomSTU, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\SignCaptureWacomSTU.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -136,6 +149,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -149,6 +163,43 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pantallafirma7.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pantallafirma11.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pantallafirma3.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pantallafirma4.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pantallafirma5.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pantallafirma6.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pantallafirma8.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pantallafirma9.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pantallafirma10.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pantallafirmanueva.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fullformatinterop.dll" />
+    <Content Include="Interop.wgssSTU.dll" />
+    <Content Include="libfullformatsignature.dll" />
+    <Content Include="SignCaptureWacomSTU.dll" />
+    <Content Include="Wacom STU SDK\wgssSTU.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
